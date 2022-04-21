@@ -1,10 +1,7 @@
-
+import Test from "./Autocomplete";
 
 function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+  return <Test />;
 }
 
 export default App;
