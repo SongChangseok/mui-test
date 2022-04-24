@@ -1,7 +1,8 @@
 import Test from "./Autocomplete";
+import DataGridTest from "./DataGrid";
 
 function App() {
-  return <Test />;
+  return <DataGridTest />;
 }
 
 export default App;
