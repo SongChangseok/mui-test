@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useMountedRef } from "../hooks/customeHooks";
+import { useMountedRef } from "../hooks/customHooks";
 
 export function useFetch(uri) {
   const [data, setData] = useState();

@@ -1,7 +1,8 @@
-import Test from "./Autocomplete";
+import React from "react";
+import TestPage from "./TestPage";
 
 function App() {
-  return <Test />;
+  return <TestPage />;
 }
 
 export default App;
