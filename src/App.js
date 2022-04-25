@@ -1,8 +1,8 @@
-import React from "react";
-import TestPage from "./TestPage";
+import Test from "./Autocomplete";
+import DataGridTest from "./DataGrid";
 
 function App() {
-  return <TestPage />;
+  return <DataGridTest />;
 }
 
 export default App;
