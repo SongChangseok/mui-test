@@ -1,8 +1,8 @@
-import Test from "./Autocomplete";
-import DataGridTest from "./DataGrid";
+import React from "react";
+import MuiRouter from "./MuiRouter";
 
 function App() {
-  return <DataGridTest />;
+  return <MuiRouter />;
 }
 
 export default App;

@@ -13,7 +13,6 @@ export const useInput = (initialValue) => {
     {
       value,
       onChange: (e) => {
-        debugger;
         setValue(e.target.value);
       },
     },

@@ -1,7 +1,7 @@
 // npm install @mui/x-data-grid...
 import React, { useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { useDemoData } from "@mui/x-data-grid-generator";
+// import { useDemoData } from "@mui/x-data-grid-generator";
 import { Button } from "@mui/material";
 
 const columns = [
@@ -55,15 +55,15 @@ const DataGridOptions = {
 //     maxColumns: 6,
 //   });
 
-const Demo = () => <DataGrid {...DataGridOptions} />;
+// const Demo = () => <DataGrid {...DataGridOptions} />;
 
-const FlexLayoutDemo = () => (
-  <div style={{ display: "flex", height: "100%" }}>
-    <div style={{ flexGrow: 1 }}>
-      <DataGrid {...DataGridOptions} />
-    </div>
-  </div>
-);
+// const FlexLayoutDemo = () => (
+//   <div style={{ display: "flex", height: "100%" }}>
+//     <div style={{ flexGrow: 1 }}>
+//       <DataGrid {...DataGridOptions} />
+//     </div>
+//   </div>
+// );
 
 const AutoHeightDemo = () => {
   const [nbRows, setNbRows] = useState(5);
@@ -79,7 +79,7 @@ const AutoHeightDemo = () => {
         Add
       </Button>
       <DataGrid
-        autoHeight
+        autoHeight // 로우 수만큼 높이 조절
         {...DataGridOptions}
         rows={DataGridOptions.rows.slice(0, nbRows)}
       />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useMountedRef } from "../hooks/customHooks";
 
-export function useFetch(uri) {
+export function useFetch(uri, { method = "POST", body = {} }) {
   const [data, setData] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
@@ -10,7 +10,14 @@ export function useFetch(uri) {
   useEffect(() => {
     if (!uri) return;
     if (!mounted.current) return;
-    fetch(uri)
+    console.log("run", uri);
+    fetch(uri, {
+      method,
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(body),
+    })
       .then((data) => {
         if (!mounted.current) throw new Error("component is not mounted");
         return data;
@@ -33,11 +40,13 @@ export function useFetch(uri) {
 
 export function Fetch({
   uri,
+  req = {},
   renderSuccess,
   loadingFallback = <p>loading...</p>,
   renderError = (error) => <pre>{JSON.stringify(error, null, 2)}</pre>,
 }) {
-  const { loading, data, error } = useFetch(uri);
+  console.log("Fetch", uri);
+  const { loading, data, error } = useFetch(uri, req);
   if (loading) return loadingFallback;
   if (error) return renderError(error);
   if (data) return renderSuccess({ data });
