@@ -77,7 +77,7 @@ const NoticeDetail = ({ open, noti_no, handleClose }) => {
   return (
     <Dialog onClose={handleClose} open={open}>
       {
-        // open이 false일 경우 다시 render할 필요가 없으므로 이렇게 처리
+        // open이 false일 경우 다시 render할 필요가 없으므로 아래와 같이 처리
         open && (
           <>
             <DialogTitle>공지사항</DialogTitle>
@@ -124,9 +124,9 @@ const TestDialog2 = ({ data }, noti_no) => {
       file_seq: file_seq,
       file_name: file_name,
     }).toString();
-
     const href = `/dstk/Notice/downloadFile.do?${queryStr}`;
     const link = document.createElement("a");
+
     link.href = href;
     document.body.appendChild(link);
     link.click();
