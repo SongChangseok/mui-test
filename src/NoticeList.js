@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Fetch } from "./common/Fetch";
+import { Fetch } from "./common/component/Fetch";
 
 const TestTable = ({ data }) => {
   return (

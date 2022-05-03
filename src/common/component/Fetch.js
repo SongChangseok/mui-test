@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useMountedRef } from "../hooks/customHooks";
+import { useMountedRef } from "../../hooks/customHooks";
+import { BackdropLoading } from "./Loading";
 
 export function useFetch(uri, { method = "POST", body = {} }) {
   const [data, setData] = useState();
@@ -42,7 +43,7 @@ export function Fetch({
   uri,
   req = {},
   renderSuccess,
-  loadingFallback = <p>loading...</p>,
+  loadingFallback = <BackdropLoading open={true} />,
   renderError = (error) => <pre>{JSON.stringify(error, null, 2)}</pre>,
 }) {
   console.log("Fetch", uri);
