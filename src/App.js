@@ -1,16 +1,8 @@
-import React, { Suspense } from "react";
-import ErrorBoundary from "./common/component/ErrorBoundary";
-import { BackdropLoading } from "./common/component/Loading";
+import React from "react";
 import MuiRouter from "./MuiRouter";
 
 function App() {
-  return (
-    <ErrorBoundary>
-      <Suspense fallback={<BackdropLoading open={true} />}>
-        <MuiRouter />
-      </Suspense>
-    </ErrorBoundary>
-  );
+  return <MuiRouter />;
 }
 
 export default App;
