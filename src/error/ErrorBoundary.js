@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-// import Alert from "./Alert";
-
-// function ErrorScreen({ open, message }) {
-//   return <Alert open={open} title="알림" message={message} />;
 
 function ErrorScreen() {
   return <div>test</div>;
