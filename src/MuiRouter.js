@@ -4,9 +4,10 @@ import Home from "./Home";
 import Login from "./login/Login";
 import NoticeList from "./NoticeList";
 import ErrorBoundary from "./error/ErrorBoundary";
-import { BackdropLoading } from "./common/component/Loading";
+import { BackdropLoading } from "./common/Loading";
 import ContextTestPage from "./Test/ContextTestPage";
 import { PopupProvider } from "./popup/PopupProvider";
+import ReackHookFormTest from "./Test/reactHookForm/ReactHookFormTest";
 
 export default function DataGridRouter() {
   return (
@@ -19,6 +20,10 @@ export default function DataGridRouter() {
               <Route path="/login.view" element={<Login />} />
               <Route path="/noticeList" element={<NoticeList />} />
               <Route path="/contextTest" element={<ContextTestPage />} />
+              <Route
+                path="/reackHookFormTest"
+                element={<ReackHookFormTest />}
+              />
             </Routes>
           </Router>
         </PopupProvider>

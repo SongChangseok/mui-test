@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useInterval } from "../../hooks/customHooks";
+import { useInterval } from "../common/hooks/CustomHooks";
 
 const padNumber = (number, length) =>
   String(parseInt(number)).padStart(length, "0");

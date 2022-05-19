@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useMountedRef } from "../../hooks/customHooks";
+import { useMountedRef } from "../common/hooks/CustomHooks";
 import { BackdropLoading } from "./Loading";
 
-export function useFetch(uri, { method = "POST", body = {} }) {
+function useFetch(uri, { method = "POST", body = {} }) {
   const [data, setData] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
@@ -39,7 +39,7 @@ export function useFetch(uri, { method = "POST", body = {} }) {
   };
 }
 
-export function Fetch({
+export default function Fetch({
   uri,
   req = {},
   renderSuccess,
