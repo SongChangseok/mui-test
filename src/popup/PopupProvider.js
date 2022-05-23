@@ -17,7 +17,6 @@ export const PopupProvider = ({ children }) => {
   );
   const openPopup = (paramters) => setPopup({ ...paramters, open: true });
   const closePopup = () => {
-    console.log("onClose");
     setPopup({ open: false });
   };
 

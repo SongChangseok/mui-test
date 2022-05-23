@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useMountedRef } from "../common/hooks/CustomHooks";
 import { BackdropLoading } from "./Loading";
 
-function useFetch(uri, { method = "POST", body = {} }) {
+function useFetch(url, { method = "POST", body = {}, headers }) {
   const [data, setData] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
   const mounted = useMountedRef();
 
   useEffect(() => {
-    if (!uri) return;
+    if (!url) return;
     if (!mounted.current) return;
-    console.log("run", uri);
-    fetch(uri, {
+    console.log("run", url);
+    fetch(url, {
       method,
       headers: {
+        ...headers,
         "Content-Type": "application/json; charset=utf-8",
       },
       body: JSON.stringify(body),
@@ -30,7 +31,7 @@ function useFetch(uri, { method = "POST", body = {} }) {
         if (!mounted.current) return;
         setError(error);
       });
-  }, [uri]);
+  }, [url]);
 
   return {
     loading,
@@ -39,16 +40,48 @@ function useFetch(uri, { method = "POST", body = {} }) {
   };
 }
 
-export default function Fetch({
-  uri,
+export function Fetch({
+  url,
   req = {},
   renderSuccess,
   loadingFallback = <BackdropLoading open={true} />,
   renderError = (error) => <pre>{JSON.stringify(error, null, 2)}</pre>,
 }) {
-  console.log("Fetch", uri);
-  const { loading, data, error } = useFetch(uri, req);
+  console.log("Fetch", url);
+  const { loading, data, error } = useFetch(url, req);
   if (loading) return loadingFallback;
   if (error) return renderError(error);
   if (data) return renderSuccess({ data });
+}
+
+export async function requestData(
+  url,
+  { method = "POST", body = {}, headers }
+) {
+  const result = await fetch(url, {
+    method,
+    headers: {
+      ...headers,
+      "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify(body),
+  });
+
+  // 삭제 예정 start
+  if (result.redirected) {
+    // const domain = `${window.location.protocol}//${window.location.host}`;
+    // const uri = result.url.replace(domain, "");
+    // return (location.href = uri);
+    console.log(result.url);
+    return result.url;
+  }
+  // 삭제 예정 end
+
+  if (result.ok) return result.json();
+
+  return {
+    success: false,
+    message: "failure",
+    data: "서버 통신 중 오류가 발생했습니다.",
+  };
 }

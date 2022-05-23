@@ -39,6 +39,6 @@ const GridDemo = ({ data }) => {
 
 export default function DataGridTest2() {
   return (
-    <Fetch uri={`/dstk/Notice/getNoticeList.do`} renderSuccess={GridDemo} />
+    <Fetch url={`/dstk/Notice/getNoticeList.do`} renderSuccess={GridDemo} />
   );
 }

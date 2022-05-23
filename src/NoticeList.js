@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import Fetch from "./common/Fetch";
+import { Fetch } from "./common/Fetch";
 
 const TestTable = ({ data }) => {
   return (
@@ -83,12 +83,12 @@ const NoticeDetail = ({ open, noti_no, handleClose }) => {
             <DialogTitle>공지사항</DialogTitle>
             <DialogContent>
               <Fetch
-                uri={`/dstk/Notice/getNoticeDetail.do`}
+                url={`/dstk/Notice/getNoticeDetail.do`}
                 req={{ body: { noti_no: noti_no } }}
                 renderSuccess={TestDialog}
               />
               <Fetch
-                uri={`/dstk/Notice/getFileList.do`}
+                url={`/dstk/Notice/getFileList.do`}
                 req={{ body: { noti_no: noti_no } }}
                 renderSuccess={(data) => TestDialog2(data, noti_no)}
               />
@@ -154,6 +154,6 @@ const TestDialog2 = ({ data }, noti_no) => {
 
 export default function NoticeList() {
   return (
-    <Fetch uri={`/dstk/Notice/getNoticeList.do`} renderSuccess={TestTable} />
+    <Fetch url={`/dstk/Notice/getNoticeList.do`} renderSuccess={TestTable} />
   );
 }
