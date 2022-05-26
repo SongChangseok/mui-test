@@ -19,7 +19,10 @@ export default function DataGridRouter() {
               <Route path="/" element={<Home />} />
               <Route path="/login.view" element={<Login />} />
               <Route path="/noticeList" element={<NoticeList />} />
-              <Route path="/contextTest" element={<ContextTestPage />} />
+              <Route
+                path="/Join/smsAuthAddr.view"
+                element={<ContextTestPage />}
+              />
               <Route
                 path="/reackHookFormTest"
                 element={<ReackHookFormTest />}
