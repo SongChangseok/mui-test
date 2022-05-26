@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Timer } from "../../common/Timer";
 import { usePopup } from "../../popup/PopupProvider";
 import Input from "../../common/Input";
-import { requestData } from "../../common/Fetch";
+import { requestData, requestDataInForm } from "../../common/Fetch";
 
 const AuthTimer = ({ isRunning = false, endTimer = (f) => f }) => {
   const [info, setIsExpired] = useReducer((info, isExpired) => ({
@@ -81,7 +81,7 @@ export default function ReactHookFormTest() {
       cust_firm_nm: cust_nm,
       tel: hp_no,
     };
-    const loginInfo = await requestData("/dstk/login", {
+    const loginInfo = await requestDataInForm("/dstk/login", {
       body: reqLogin,
     });
     console.log(loginInfo);
