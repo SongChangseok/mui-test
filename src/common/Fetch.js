@@ -15,8 +15,8 @@ function useFetch(url, { method = "POST", body = {}, headers }) {
     fetch(url, {
       method,
       headers: {
-        ...headers,
         "Content-Type": "application/json; charset=utf-8",
+        ...headers,
       },
       body: JSON.stringify(body),
     })
@@ -54,26 +54,13 @@ export function Fetch({
   if (data) return renderSuccess({ data });
 }
 
-export async function requestData(
-  url,
-  { method = "POST", body = {}, headers }
-) {
-  const result = await fetch(url, {
-    method,
-    headers: {
-      ...headers,
-      "Content-Type": "application/json; charset=utf-8",
-    },
-    body: JSON.stringify(body),
-  });
+async function customFetch(url, { method = "POST", body = {}, headers }) {
+  const result = await fetch(url, { method, body, headers });
 
   // 삭제 예정 start
   if (result.redirected) {
-    // const domain = `${window.location.protocol}//${window.location.host}`;
-    // const uri = result.url.replace(domain, "");
-    // return (location.href = uri);
-    console.log(result.url);
-    return result.url;
+    const path = result.url.replace(process.env.REACT_APP_API_HOST, "");
+    return (location.href = path);
   }
   // 삭제 예정 end
 
@@ -84,4 +71,32 @@ export async function requestData(
     message: "failure",
     data: "서버 통신 중 오류가 발생했습니다.",
   };
+}
+
+export async function requestData(
+  url,
+  { method = "POST", body = {}, headers }
+) {
+  return await customFetch(url, {
+    method,
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      ...headers,
+    },
+  });
+}
+
+export async function requestDataInForm(
+  url,
+  { method = "POST", body = {}, headers }
+) {
+  return await customFetch(url, {
+    method,
+    body: new URLSearchParams(body),
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      ...headers,
+    },
+  });
 }
