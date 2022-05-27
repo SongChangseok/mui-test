@@ -10,6 +10,7 @@ export default function Home() {
         <Link to="/noticeList">공지사항</Link>
         <Link to="/contextTest">Context Test</Link>
         <Link to="/reackHookFormTest">ReackHookForm Test</Link>
+        <Link to="/Join/smsAuthAddr.view">SmsAuthAddr</Link>
       </nav>
     </div>
   );

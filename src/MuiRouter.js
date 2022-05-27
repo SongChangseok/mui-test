@@ -5,9 +5,9 @@ import Login from "./login/Login";
 import NoticeList from "./NoticeList";
 import ErrorBoundary from "./error/ErrorBoundary";
 import { BackdropLoading } from "./common/Loading";
-import ContextTestPage from "./Test/ContextTestPage";
 import { PopupProvider } from "./popup/PopupProvider";
 import ReackHookFormTest from "./Test/reactHookForm/ReactHookFormTest";
+import SmsAuthAddr from "./join/SmsAuthAddr";
 
 export default function DataGridRouter() {
   return (
@@ -19,10 +19,7 @@ export default function DataGridRouter() {
               <Route path="/" element={<Home />} />
               <Route path="/login.view" element={<Login />} />
               <Route path="/noticeList" element={<NoticeList />} />
-              <Route
-                path="/Join/smsAuthAddr.view"
-                element={<ContextTestPage />}
-              />
+              <Route path="/Join/smsAuthAddr.view" element={<SmsAuthAddr />} />
               <Route
                 path="/reackHookFormTest"
                 element={<ReackHookFormTest />}
